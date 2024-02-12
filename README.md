@@ -1,4 +1,4 @@
-# java_enterprise-final project
+# java_enterprise project
 
 The project contains the following subprojects: 
 
@@ -6,6 +6,10 @@ The project contains the following subprojects:
 2. Discovery-service (combined with Config-service)
 3. Auth-service
 4. Order-service
+4. Payment-service
+4. Delivery-service
+
+All services worked as demonstration
 
 ## Environment
 
