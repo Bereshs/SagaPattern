@@ -1,0 +1,31 @@
+scrape_configs:
+  - job_name: 'auth-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/auth/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8083']
+  - job_name: 'order-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/order/api/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'payment-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/payment/api/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'inventory-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/inventory/api/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'delivery-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/delivery/api/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'gateway-service_monitoring'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

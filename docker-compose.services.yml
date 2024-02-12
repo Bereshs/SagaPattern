@@ -1,0 +1,90 @@
+version: '2.2'
+services:
+  discovery:
+    image: delivery/discovery:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    restart: always
+
+  auth-service:
+    image: delivery/auth-service:0.0.1-SNAPSHOT
+    ports:
+      - "8083:8083"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/auth_user_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+    restart: always
+    depends_on:
+      - discovery
+
+  order-service:
+    image: delivery/order:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/order_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+    restart: always
+    depends_on:
+      - discovery
+
+  payment-service:
+    image: delivery/payment-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/payment_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+    restart: always
+    depends_on:
+      - order-service
+
+  inventory-service:
+    image: delivery/inventory-service:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8082"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/inventory_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+    restart: always
+    depends_on:
+      - payment-service
+  delivery-service:
+    image: delivery/delivery-service:0.0.1-SNAPSHOT
+    ports:
+      - "8084:8084"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/delivery_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+    restart: always
+    depends_on:
+      - inventory-service
+
+
+  gateway:
+    image: delivery/gateway:0.0.1-SNAPSHOT
+    ports:
+      - "9090:9090"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+    restart: always
+    depends_on:
+      - discovery
+      - auth-service
+      - order-service

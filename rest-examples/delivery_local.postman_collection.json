@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "c5e7e429-dc10-4bee-b14a-9d930ed1008a",
+		"name": "delivery_local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_user_signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vasya\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/auth/user/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"auth",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_user_signup_gateway",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vasya2\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/auth/user/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"auth",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_user_generate_token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vasya\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/auth/token/generate",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"auth",
+						"token",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_users_with_token_gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXNlcm1hbiIsImlzcyI6Imh0dHA6Ly9za2lsbGJveC5ydSIsImV4cCI6MTYyMDUxMzgxMSwiaWF0IjoxNjIwNTEyOTQ3fQ.AMDhXM9gu_PzX4H47cHk88n1jkFyKnDYhBwIJ_wxVNL1k-5Guz5UhPz5SrUVqB2rBDZp5i1PKc7Iy-pDSOLtfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_users_with_token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXNlcm1hbiIsImlzcyI6Imh0dHA6Ly9za2lsbGJveC5ydSIsImV4cCI6MTYyMDUxMzgxMSwiaWF0IjoxNjIwNTEyOTQ3fQ.AMDhXM9gu_PzX4H47cHk88n1jkFyKnDYhBwIJ_wxVNL1k-5Guz5UhPz5SrUVqB2rBDZp5i1PKc7Iy-pDSOLtfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/auth/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"auth",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post_orders_gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXNlcm1hbjIiLCJpc3MiOiJodHRwOi8vc2tpbGxib3gucnUiLCJleHAiOjE2MjA1OTQyOTcsImlhdCI6MTYyMDU5MzQzM30.57s0sAr0BoAWcxgT8pFg7GPRxqW349hpJUx9mPjzDyQ8yQkMN9pS6OEiEYFwkK9u1zsfQ1GldsJxjjTj1GAXNw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Order #1\",\n    \"departureAddress\": \"Moscow, m.Taganka\",\n    \"destinationAddress\": \"Moscow, m.Tulskaya\",\n    \"cost\": \"5000\" \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_orders_gateway",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/skillbox/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"skillbox",
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "0c9f06e1-6740-4d24-9eb6-601d796429b3",
+		"name": "delivery_compose",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_user_signup_gateway",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vasya2\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/auth/user/signup",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"auth",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_user_generate_token_gateway",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vasya2\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/auth/token/generate",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"auth",
+						"token",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_users_with_token_gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXN5YTIiLCJpc3MiOiJodHRwOi8vc2tpbGxib3gucnUiLCJleHAiOjE2MjA3NjA0MTYsImlhdCI6MTYyMDY3NDAxNn0.0YqsgTm7vJcedPQpUWP58Fv3_Ma5TEZ_aleo7sFo0Yv6zhuq-HRxcWQ966N3_K5BAC9hzYFEA1KbFgLhD6Anlg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/auth/user/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"auth",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_orders_gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post_orders_gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXN5YTIiLCJpc3MiOiJodHRwOi8vc2tpbGxib3gucnUiLCJleHAiOjE2MjA3NjA0MTYsImlhdCI6MTYyMDY3NDAxNn0.0YqsgTm7vJcedPQpUWP58Fv3_Ma5TEZ_aleo7sFo0Yv6zhuq-HRxcWQ966N3_K5BAC9hzYFEA1KbFgLhD6Anlg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Order #1\",\n    \"departureAddress\": \"Moscow, m.Taganka\",\n    \"destinationAddress\": \"Moscow, m.Tulskaya\",\n    \"cost\": \"5000\" \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
