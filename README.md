@@ -1,4 +1,5 @@
-# java_enterprise project
+# Saga pattenr in microservice
+you can read descriptions in [baeldung](https://www.baeldung.com/cs/saga-pattern-microservices)
 
 The project contains the following subprojects: 
 
